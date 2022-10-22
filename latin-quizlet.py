@@ -14,6 +14,9 @@ def main():
         url = 'https://www.latin-is-simple.com/api/vocabulary/search/'
         params = {'query' : word, 'forms_only' : 'true'}
         data = requests.get(url, params).json()
+        if not data:
+            print('\033[91m' + word + ' not found \033[0m')
+            continue
         word = next(w for w in data if w)
 
         # Get full form / principle parts
