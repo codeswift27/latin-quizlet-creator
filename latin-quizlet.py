@@ -29,9 +29,11 @@ def main():
             term = ', '.join(term).lower()
         elif part_of_speech == 'noun':
             term = term[:-2].lower()
+        elif part_of_speech == 'adj':
+            term = term[:-4].replace('/',', ')
             
         # Get translation
-        translation = word['translations_unstructured']['en'].split(', ')
+        translation = word['translations_unstructured']['en'].replace('/',', ').split(', ')
         translation = ', '.join([*set(translation)])
 
         print(term + ' - ' + translation)
